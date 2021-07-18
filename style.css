@@ -1,0 +1,17 @@
+/* For global sizing use BOX-SIZING value from content-box to border-box
+   This ensures padding doesn't affact the final computed width. */
+
+.container-1{
+    display: flex;
+    border: solid black;
+    padding: 1em;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.container-1 div{
+    display:flex;
+    border:solid black;
+    padding: 1em;
+    align-items: center;
+}
