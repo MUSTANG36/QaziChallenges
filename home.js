@@ -32,7 +32,7 @@ function ageInDays(){
 
     //create and store 
     let h1 = document.createElement('h1');
-    let textAnswer = document.createTextNode('Youa are ' +ageInDays+ 'days');
+    let textAnswer = document.createTextNode('You are ' +ageInDays+ 'days');
     h1.setAttribute('id','ageInDays');
     h1.appendChild(textAnswer);
 
@@ -48,4 +48,14 @@ function ageInDays(){
 
  function resetAge(){
     document.getElementById('ageInDays').remove();
+
+}
+
+
+function CatGenerator(){
+    let image = document.createElement('img');
+    let div = document.getElementById('flex-box-container-2');
+    image.src = 'https://cdn2.thecatapi.com/images/MTc0MTAxNw.gif';
+    div.appendChild(image);
+
 }

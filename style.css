@@ -1,12 +1,14 @@
 /* For global sizing use BOX-SIZING value from content-box to border-box
    This ensures padding doesn't affact the final computed width. */
 
-.container-1{
+.container-1, .container-2{
     display: flex;
     border: solid black;
     padding: 1em;
     flex-wrap: wrap;
     justify-content: space-around;
+    flex-direction: row;
+    
 }
 
 .container-1 div{
@@ -14,4 +16,21 @@
     border:solid black;
     padding: 1em;
     align-items: center;
+}
+
+.container-2 {
+
+    border:1px solid red;
+    /*center*/
+    margin: 0 auto;
+    /*put h2 text in the center*/
+    text-align:center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.flex-box-container-2 img{
+
+   margin: 10px;
+
+    
 }
