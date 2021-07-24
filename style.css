@@ -33,9 +33,11 @@
    margin: 10px;
 
 }
-.flex-box-3 img{
-    
-   margin: 10px;
+.container{
+   text-align: center;
+}
+.rpsChoices img:hover{
+   box-shadow: 0px 10px 50px rgba(37, 50, 233,1);
 
 }
 .flex-box-3 img:hover{

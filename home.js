@@ -59,3 +59,18 @@ function CatGenerator(){
     div.appendChild(image);
 
 }
+
+function rpsGame(choice){
+
+    let humanChoice, botChoice;
+
+    //give us the id
+    humanChoice = choice.id;
+
+    botChoice  = 
+
+    results = decideWinner(humanChoice, botChoice); //[0,1] human lost | bot won
+
+
+    
+}
