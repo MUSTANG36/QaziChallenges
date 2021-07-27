@@ -1,3 +1,4 @@
+'use strict';
 // this is a comment line
 
 // console.log('hello');
@@ -60,17 +61,43 @@ function CatGenerator(){
 
 }
 
-function rpsGame(choice){
+function rpsGame(yourChoice){
 
     let humanChoice, botChoice;
 
     //give us the id
-    humanChoice = choice.id;
+    //humanChoice = choice.id;
+    console.log(yourChoice);
+    //Gerenate random number by 0-2 
+    //Math.random get a random number by 000000000000-199999999.
+    //math.floor rounds to the neart
+    //* number is range
+    botChoice  = numberToChoice(randRPSInt());
+    alert(randRPSInt());
 
-    botChoice  = 
+    alert(botChoice);
+   // results = decideWinner(humanChoice, botChoice); //[0,1] human lost | bot won
 
-    results = decideWinner(humanChoice, botChoice); //[0,1] human lost | bot won
 
+    message = finalMessage(results) // you won, 'message'": 'You won!' , 'color' , 'green' ,
 
+    rpsFrontEnd(yourChoice.id, botChoice, message);
     
+    
+
+
 }
+
+
+function randRPSInt(){
+    return Math.floor(Math.random() * 2);
+
+}
+
+function numberToChoice(number){
+     return ['rock', 'scissor', 'paper'][number];
+
+}
+
+
+ 
