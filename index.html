@@ -76,15 +76,16 @@
         <div class="row rpsChoices">
             
                 <div class="col-sm-4">
-                    <img id="paper" src="Images/paperHand.png" alt="" onClick="rpsGame">
+                    <!-- passing image element-> (this) -->
+                    <img id="paper" src="Images/paperHand.png" alt="" onClick="rpsGame(this)">
                 </div>
 
                 <div class="col-sm-4">
-                    <img id="rock" src="Images/rockHand.png" style="max-width: 300px;" alt=" " onClick="rpsGame">
+                    <img id="rock" src="Images/rockHand.png" style="max-width: 300px;" alt=" " onClick="rpsGame(this)">
                 </div>
 
                 <div class="col-sm-4">
-                    <img id="scissor" src="Images/scissorHand.png" style="max-width: 300px;" alt="" onClick="rpsGame"> 
+                    <img id="scissor" src="Images/scissorHand.png" style="max-width: 300px;" alt="" onClick="rpsGame(this)"> 
                 </div>
      
             

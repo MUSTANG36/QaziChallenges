@@ -66,22 +66,22 @@ function rpsGame(yourChoice){
     let humanChoice, botChoice;
 
     //give us the id
-    //humanChoice = choice.id;
-    console.log(yourChoice);
+    humanChoice = yourChoice.id;
+  
+  
     //Gerenate random number by 0-2 
     //Math.random get a random number by 000000000000-199999999.
     //math.floor rounds to the neart
     //* number is range
     botChoice  = numberToChoice(randRPSInt());
-    alert(randRPSInt());
 
-    alert(botChoice);
-   // results = decideWinner(humanChoice, botChoice); //[0,1] human lost | bot won
+    
+    let results = decideWinner(humanChoice, botChoice); //[0,1] human lost | bot won
+    console.log(results);
 
+   // message = finalMessage(results) // you won, 'message'": 'You won!' , 'color' , 'green' ,
 
-    message = finalMessage(results) // you won, 'message'": 'You won!' , 'color' , 'green' ,
-
-    rpsFrontEnd(yourChoice.id, botChoice, message);
+   // rpsFrontEnd(yourChoice.id, botChoice, message);
     
     
 
@@ -99,5 +99,20 @@ function numberToChoice(number){
 
 }
 
+function decideWinner(yourChoice,computerChoice){
+    //object
+    let rpsDatebase ={
+        // what rock will win or lose
+        'rock':{'scissor': 1 , 'rock': .5, 'paper':0 },
+        'scissor':{'scissor':.5, 'rock': 0, 'paper':1 },
+        'paper':{'scissor':0, 'rock': 1, 'paper':.5 }
+    }
 
- 
+    //this will return an array
+    // yourScore = .05 | 1 | 0
+    let yourScore = rpsDatebase[yourChoice][computerChoice];
+    let computerScore = rpsDatebase[computerChoice][yourChoice];
+
+    return [yourScore][computerScore];
+
+} 
