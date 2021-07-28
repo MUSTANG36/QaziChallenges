@@ -75,11 +75,11 @@ function rpsGame(yourChoice){
     //* number is range
     botChoice  = numberToChoice(randRPSInt());
 
-    
+    console.log(botChoice);
     let results = decideWinner(humanChoice, botChoice); //[0,1] human lost | bot won
     console.log(results);
 
-   // message = finalMessage(results) // you won, 'message'": 'You won!' , 'color' , 'green' ,
+   finalMessage(results) // you won, 'message'": 'You won!' , 'color' , 'green' ,
 
    // rpsFrontEnd(yourChoice.id, botChoice, message);
     
@@ -103,9 +103,9 @@ function decideWinner(yourChoice,computerChoice){
     //object
     let rpsDatebase ={
         // what rock will win or lose
-        'rock':{'scissor': 1 , 'rock': .5, 'paper':0 },
-        'scissor':{'scissor':.5, 'rock': 0, 'paper':1 },
-        'paper':{'scissor':0, 'rock': 1, 'paper':.5 }
+        'rock':{'scissor': 1 , 'rock': .05, 'paper':0 },
+        'scissor':{'scissor':.05, 'rock': 0, 'paper':1 },
+        'paper':{'scissor':0, 'rock': 1, 'paper':.05 }
     }
 
     //this will return an array
@@ -113,6 +113,21 @@ function decideWinner(yourChoice,computerChoice){
     let yourScore = rpsDatebase[yourChoice][computerChoice];
     let computerScore = rpsDatebase[computerChoice][yourChoice];
 
-    return [yourScore][computerScore];
+    
+
+    return [yourScore, computerScore];
 
 } 
+
+function finalMessage([yourScore, computerScore]) {
+
+    if(yourScore === 0){
+        alert("Human Lost");
+        return {'message': 'You lost', 'color' : 'red'}
+    }else if (yourScore === 1){
+        return {'message': }
+    }else{
+        alert("Tie Game");
+    }
+
+}
