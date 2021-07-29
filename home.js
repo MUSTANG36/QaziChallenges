@@ -79,9 +79,10 @@ function rpsGame(yourChoice){
     let results = decideWinner(humanChoice, botChoice); //[0,1] human lost | bot won
     console.log(results);
 
-   finalMessage(results) // you won, 'message'": 'You won!' , 'color' , 'green' ,
+    let message = finalMessage(results) // you won, 'message'": 'You won!' , 'color' , 'green' ,
+    console.log(message);
 
-   // rpsFrontEnd(yourChoice.id, botChoice, message);
+    rpsFrontEnd(yourChoice.id, botChoice, message);
     
     
 
@@ -122,12 +123,56 @@ function decideWinner(yourChoice,computerChoice){
 function finalMessage([yourScore, computerScore]) {
 
     if(yourScore === 0){
-        alert("Human Lost");
         return {'message': 'You lost', 'color' : 'red'}
     }else if (yourScore === 1){
-        return {'message': }
+        return {'message': 'You won', 'color' : 'green'}
     }else{
-        alert("Tie Game");
+        return {'message' : 'Tie Game' , 'color' : 'yellow'}
     }
+
+}
+
+function rpsFrontEnd(humanImageChoice, botImageChoice, finalMessage){
+    //json object 
+    //this make it really easy to access any of these images
+    let imagesDatebase ={
+        'rock': document.getElementById('rock').src ,
+        'paper': document.getElementById('paper').src,
+        'scissor' : document.getElementById('scissor').src
+    }
+
+  
+
+    //removes all images
+
+    document.getElementById('rock').remove();
+    
+    document.getElementById('scissor').remove();
+    
+    document.getElementById('paper').remove();
+
+
+    let humanDiv = document.createElement('div');
+    let botDiv = document.createElement('div');
+    let messageDiv = document.createElement('div');
+
+    humanDiv.innerHTML ="<img src='" +imagesDatebase[humanImageChoice]+ "'height=150 width=150 style=' box-shadow: 0px 10px 50px rgba(37, 50, 233,1)'>"
+
+    
+    botDiv.innerHTML ="<img src='" +imagesDatebase[botImageChoice]+ "'height=150 width=150 style=' box-shadow: 0px 10px 50px rgba(243, 38, 24,1)'>"
+
+
+    //translation: <h1 style='color:green'> You Won! </h1>
+    messageDiv.innerHTML ="<h1 style ='color:" + finalMessage['color'] + "; font-size: 60px; padding:30px: '> " + finalMessage['message'] + "</h1>"
+
+
+    
+    document.getElementById('rpsChoicesDiv').appendChild(humanDiv);
+
+    document.getElementById('rpsChoicesDiv').appendChild(botDiv);
+
+    document.getElementById('rpsChoicesDiv').appendChild(messageDiv);
+
+
 
 }
