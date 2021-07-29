@@ -1,13 +1,11 @@
 /* For global sizing use BOX-SIZING value from content-box to border-box
    This ensures padding doesn't affact the final computed width. */
 
-.container-1, .container-2{
-    display: flex;
-    border: solid black;
-    padding: 1em;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    flex-direction: row;
+.container-1, .container-2, .container-3, .container-4{
+    border:1px solid black;
+    width:75%;
+    margin: 0 auto;
+    text-align: center;
     
 }
 
@@ -18,15 +16,15 @@
     align-items: center;
 }
 
-.container-2 {
-
-    border:1px solid red;
+.container-2 .flex-box-pick-color{
+   display: flex;
+    border:1px solid black;
     /*center*/
-    margin: 0 auto;
+    padding: 10px;
     /*put h2 text in the center*/
-    text-align:center;
     flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-around;
 }
 .flex-box-container-2 img{
 
