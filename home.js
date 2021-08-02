@@ -24,7 +24,7 @@
 //  greeting(firstName);
 
 
-function ageInDays(){
+function ageInDays() {
     let brithYear = prompt("What year were you born on?");
     let cd = new Date();
     let currentYear = cd.getFullYear();
@@ -33,8 +33,8 @@ function ageInDays(){
 
     //create and store 
     let h1 = document.createElement('h1');
-    let textAnswer = document.createTextNode('You are ' +ageInDays+ 'days');
-    h1.setAttribute('id','ageInDays');
+    let textAnswer = document.createTextNode('You are ' + ageInDays + 'days');
+    h1.setAttribute('id', 'ageInDays');
     h1.appendChild(textAnswer);
 
     //display
@@ -42,18 +42,18 @@ function ageInDays(){
     console.log(textAnswer);
 
     document.getElementsById(ageResults);
-    
+
 
 
 }
 
- function resetAge(){
+function resetAge() {
     document.getElementById('ageInDays').remove();
 
 }
 
 
-function CatGenerator(){
+function CatGenerator() {
     let image = document.createElement('img');
     let div = document.getElementById('flex-box-container-2');
     image.src = 'https://cdn2.thecatapi.com/images/MTc0MTAxNw.gif';
@@ -61,19 +61,19 @@ function CatGenerator(){
 
 }
 
-function rpsGame(yourChoice){
+function rpsGame(yourChoice) {
 
     let humanChoice, botChoice;
 
     //give us the id
     humanChoice = yourChoice.id;
-  
-  
+
+
     //Gerenate random number by 0-2 
     //Math.random get a random number by 000000000000-199999999.
     //math.floor rounds to the neart
     //* number is range
-    botChoice  = numberToChoice(randRPSInt());
+    botChoice = numberToChoice(randRPSInt());
 
     console.log(botChoice);
     let results = decideWinner(humanChoice, botChoice); //[0,1] human lost | bot won
@@ -83,30 +83,30 @@ function rpsGame(yourChoice){
     console.log(message);
 
     rpsFrontEnd(yourChoice.id, botChoice, message);
-    
-    
+
+
 
 
 }
 
 
-function randRPSInt(){
+function randRPSInt() {
     return Math.floor(Math.random() * 2);
 
 }
 
-function numberToChoice(number){
-     return ['rock', 'scissor', 'paper'][number];
+function numberToChoice(number) {
+    return ['rock', 'scissor', 'paper'][number];
 
 }
 
-function decideWinner(yourChoice,computerChoice){
+function decideWinner(yourChoice, computerChoice) {
     //object
-    let rpsDatebase ={
+    let rpsDatebase = {
         // what rock will win or lose
-        'rock':{'scissor': 1 , 'rock': .05, 'paper':0 },
-        'scissor':{'scissor':.05, 'rock': 0, 'paper':1 },
-        'paper':{'scissor':0, 'rock': 1, 'paper':.05 }
+        'rock': { 'scissor': 1, 'rock': .05, 'paper': 0 },
+        'scissor': { 'scissor': .05, 'rock': 0, 'paper': 1 },
+        'paper': { 'scissor': 0, 'rock': 1, 'paper': .05 }
     }
 
     //this will return an array
@@ -114,41 +114,41 @@ function decideWinner(yourChoice,computerChoice){
     let yourScore = rpsDatebase[yourChoice][computerChoice];
     let computerScore = rpsDatebase[computerChoice][yourChoice];
 
-    
+
 
     return [yourScore, computerScore];
 
-} 
+}
 
 function finalMessage([yourScore, computerScore]) {
 
-    if(yourScore === 0){
-        return {'message': 'You lost', 'color' : 'red'}
-    }else if (yourScore === 1){
-        return {'message': 'You won', 'color' : 'green'}
-    }else{
-        return {'message' : 'Tie Game' , 'color' : 'yellow'}
+    if (yourScore === 0) {
+        return { 'message': 'You lost', 'color': 'red' }
+    } else if (yourScore === 1) {
+        return { 'message': 'You won', 'color': 'green' }
+    } else {
+        return { 'message': 'Tie Game', 'color': 'yellow' }
     }
 
 }
 
-function rpsFrontEnd(humanImageChoice, botImageChoice, finalMessage){
+function rpsFrontEnd(humanImageChoice, botImageChoice, finalMessage) {
     //json object 
     //this make it really easy to access any of these images
-    let imagesDatebase ={
-        'rock': document.getElementById('rock').src ,
+    let imagesDatebase = {
+        'rock': document.getElementById('rock').src,
         'paper': document.getElementById('paper').src,
-        'scissor' : document.getElementById('scissor').src
+        'scissor': document.getElementById('scissor').src
     }
 
-  
+
 
     //removes all images
 
     document.getElementById('rock').remove();
-    
+
     document.getElementById('scissor').remove();
-    
+
     document.getElementById('paper').remove();
 
 
@@ -156,17 +156,17 @@ function rpsFrontEnd(humanImageChoice, botImageChoice, finalMessage){
     let botDiv = document.createElement('div');
     let messageDiv = document.createElement('div');
 
-    humanDiv.innerHTML ="<img src='" +imagesDatebase[humanImageChoice]+ "'height=150 width=150 style=' box-shadow: 0px 10px 50px rgba(37, 50, 233,1)'>"
+    humanDiv.innerHTML = "<img src='" + imagesDatebase[humanImageChoice] + "'height=150 width=150 style=' box-shadow: 0px 10px 50px rgba(37, 50, 233,1)'>"
 
-    
-    botDiv.innerHTML ="<img src='" +imagesDatebase[botImageChoice]+ "'height=150 width=150 style=' box-shadow: 0px 10px 50px rgba(243, 38, 24,1)'>"
+
+    botDiv.innerHTML = "<img src='" + imagesDatebase[botImageChoice] + "'height=150 width=150 style=' box-shadow: 0px 10px 50px rgba(243, 38, 24,1)'>"
 
 
     //translation: <h1 style='color:green'> You Won! </h1>
-    messageDiv.innerHTML ="<h1 style ='color:" + finalMessage['color'] + "; font-size: 60px; padding:30px: '> " + finalMessage['message'] + "</h1>"
+    messageDiv.innerHTML = "<h1 style ='color:" + finalMessage['color'] + "; font-size: 60px; padding:30px: '> " + finalMessage['message'] + "</h1>"
 
 
-    
+
     document.getElementById('rpsChoicesDiv').appendChild(humanDiv);
 
     document.getElementById('rpsChoicesDiv').appendChild(botDiv);
@@ -174,5 +174,50 @@ function rpsFrontEnd(humanImageChoice, botImageChoice, finalMessage){
     document.getElementById('rpsChoicesDiv').appendChild(messageDiv);
 
 
+}
 
+//challenge 4: change all the button colors 
+
+let allButtons = document.getElementsByTagName('button');
+
+//removing all the classes and adding new classes 
+let copyAllButtons = []
+for(let i =0; i < allButtons.length; i++){
+    copyAllButtons.push(allButtons[i].classList[1]);
+}
+
+
+
+function buttonColorChange(colorBtn) {
+    //html collection 
+    
+
+    var colorOption = document.getElementById("background").value;
+
+    //assign to all buttons?? think i have to use innerHtml
+
+    if(colorOption === 'red'){
+        buttonsRed();
+    }else if(colorOption ==='green'){
+        buttonsGreen();
+    }else if (colorOption === 'reset'){
+        backgroundColorReset();
+    }else if(colorOption == 'random'){
+        randomColors();
+    }
+
+    alert("The color picked was: " + colorOption);
+    
+    console.log("The color picked was: " + colorOption);
+
+
+}
+
+function buttonsRed(){
+    // allButtons[i].classList[1] get the second class of the [i] button
+    for(let i = 0; i < allButtons.length ; i ++){
+        allButtons[i].classList.remove(allButtons[i].classList[1])
+        allButtons[i].classList.add('btn-danger');
+    }
+   
 }
