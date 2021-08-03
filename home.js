@@ -178,14 +178,16 @@ function rpsFrontEnd(humanImageChoice, botImageChoice, finalMessage) {
 
 //challenge 4: change all the button colors 
 
-let allButtons = document.getElementsByTagName('button');
+var allButtons = document.getElementsByTagName('button');
+console.log(allButtons.length);
 
-//removing all the classes and adding new classes 
-let copyAllButtons = []
+//copying the btn-class in order to copyAllButtons
+let copyAllButtons = [];
 for(let i =0; i < allButtons.length; i++){
     copyAllButtons.push(allButtons[i].classList[1]);
 }
 
+console.log(copyAllButtons);
 
 
 function buttonColorChange(colorBtn) {
@@ -206,7 +208,6 @@ function buttonColorChange(colorBtn) {
         randomColors();
     }
 
-    alert("The color picked was: " + colorOption);
     
     console.log("The color picked was: " + colorOption);
 
@@ -215,9 +216,39 @@ function buttonColorChange(colorBtn) {
 
 function buttonsRed(){
     // allButtons[i].classList[1] get the second class of the [i] button
-    for(let i = 0; i < allButtons.length ; i ++){
+    for(let i = 0; i < allButtons.length; i ++){
         allButtons[i].classList.remove(allButtons[i].classList[1])
         allButtons[i].classList.add('btn-danger');
     }
    
+}
+
+function buttonsGreen(){
+    for(let i=0;i < allButtons.length; i++){
+        allButtons[i].classList.remove(allButtons[i].classList[1])
+        allButtons[i].classList.add('btn-success');
+    }
+
+}
+
+function buttonRandom(){
+    for(let i=0; i < allButtons.length; i++){
+        //erase classes
+        allButtons[i].classList.remove(allButtons[i].classList[1])
+        //create random
+        //let random = 
+        // assign numbers to specific colors
+        // else if (random number === assign color number)
+        //add random
+
+    }
+
+}
+
+function backgroundColorReset(){
+    for(let i = 0; i < allButtons.length; i++){
+        allButtons[i].classList.remove(allButtons[i].classList[1]);
+        allButtons[i].classList.add(copyAllButtons[i]);
+    }
+
 }
