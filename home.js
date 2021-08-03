@@ -178,8 +178,10 @@ function rpsFrontEnd(humanImageChoice, botImageChoice, finalMessage) {
 
 //challenge 4: change all the button colors 
 
-var allButtons = document.getElementsByTagName('button');
+let allButtons = document.getElementsByTagName("button");
+
 console.log(allButtons.length);
+
 
 //copying the btn-class in order to copyAllButtons
 let copyAllButtons = [];
