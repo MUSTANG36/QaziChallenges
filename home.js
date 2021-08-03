@@ -1,4 +1,4 @@
-'use strict';
+
 // this is a comment line
 
 // console.log('hello');
@@ -178,18 +178,23 @@ function rpsFrontEnd(humanImageChoice, botImageChoice, finalMessage) {
 
 //challenge 4: change all the button colors 
 
-let allButtons = document.getElementsByTagName("button");
+let allButtons = document.getElementsByClassName('btn');
 
-console.log(allButtons.length);
+
 
 
 //copying the btn-class in order to copyAllButtons
 let copyAllButtons = [];
+
+
 for(let i =0; i < allButtons.length; i++){
-    copyAllButtons.push(allButtons[i].classList[1]);
+    copyAllButtons.push(allButtons[i]);
 }
 
+//copyAllButtons isn't working, allButtons HTMLCollection shows this nothing, []
+console.log(allButtons);
 console.log(copyAllButtons);
+
 
 
 function buttonColorChange(colorBtn) {
@@ -233,24 +238,26 @@ function buttonsGreen(){
 
 }
 
-function buttonRandom(){
+function randomColors(){
+
+    let choices = ['btn-primary' ,'btn-danger','btn-success','btn-warning'];
+
     for(let i=0; i < allButtons.length; i++){
-        //erase classes
+       
+        let randomButtonsColors = choices[Math.floor(Math.random()*4)];
         allButtons[i].classList.remove(allButtons[i].classList[1])
-        //create random
-        //let random = 
-        // assign numbers to specific colors
-        // else if (random number === assign color number)
-        //add random
+      
+        allButtons[i].classList.add(randomButtonsColors);
 
     }
 
 }
-
+//This function won't work since copyAllButtons isn't working
 function backgroundColorReset(){
     for(let i = 0; i < allButtons.length; i++){
         allButtons[i].classList.remove(allButtons[i].classList[1]);
         allButtons[i].classList.add(copyAllButtons[i]);
+
     }
 
 }
