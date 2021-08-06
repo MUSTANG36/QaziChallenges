@@ -1,7 +1,7 @@
 /* For global sizing use BOX-SIZING value from content-box to border-box
    This ensures padding doesn't affact the final computed width. */
 
-.container-1, .container-2, .container-3, .container-4{
+.container-1, .container-2, .container-3, .container-4, .container-5{
     border:1px solid black;
     width:75%;
     margin: 0 auto;
@@ -9,14 +9,14 @@
     
 }
 
-.container-1 div{
+.container-1 div {
     display:flex;
     border:solid black;
     padding: 1em;
     align-items: center;
 }
 
-.container-2 .flex-box-pick-color{
+.container-2 .flex-box-pick-color  {
    display: flex;
     border:1px solid black;
     /*center*/
@@ -26,12 +26,12 @@
     flex-direction: row;
     justify-content: space-around;
 }
-.flex-box-container-2 img{
+.flex-box-container-2 img { 
 
    margin: 10px;
 
 }
-.container{
+.container  {
    text-align: center;
 }
 .rpsChoices img:hover{
@@ -43,3 +43,13 @@
    box-shadow: 0px 10px 50px rgba(37, 50, 233,1);
  
  }
+
+/* Need a border */
+ table {
+   border: black solid 1px;
+   margin-left: auto;
+   margin-right: auto;
+}
+td{
+   border: black solid 1px;
+}
