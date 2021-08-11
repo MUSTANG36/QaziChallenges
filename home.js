@@ -250,3 +250,24 @@ function backgroundColorReset() {
     }
     console.log(copyAllButtons);
 }
+
+/////////////////////////////////////////Challege 5: BlackJack////////////////////////////////////////////////////////////////////////////////////
+
+let blackjackGame ={
+    'you': {'scoreSpan' : '#your-blackjack-result', 'div': '#your-box',"score":0}
+    'dealer': {'scoreSpan' : '#dealer-blackjack-result', 'div': '#dealer-box',"score":0}
+}
+
+
+//Query Selectors work like CSS
+//if someone hits with someone with this ID, then even listener will run the function Blackjackhit
+document.querySelector('#blackjack-hit-button').addEventListener('click', blackjackHit);
+
+function blackjackHit() {
+
+
+    alert(' work bitch');
+
+} 
+
+
