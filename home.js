@@ -254,20 +254,60 @@ function backgroundColorReset() {
 /////////////////////////////////////////Challege 5: BlackJack////////////////////////////////////////////////////////////////////////////////////
 
 let blackjackGame ={
-    'you': {'scoreSpan' : '#your-blackjack-result', 'div': '#your-box',"score":0}
-    'dealer': {'scoreSpan' : '#dealer-blackjack-result', 'div': '#dealer-box',"score":0}
+    'you': {'scoreSpan' : '#your-blackjack-result', 'div': '#your-box',"score":0},
+    'dealer': {'scoreSpan' : '#dealer-blackjack-result', 'div': '#dealer-box',"score":0},
+    'cards' : ['1','2','3','4','5','6','7','8','9','K','Q','A','J'],
 }
 
+const YOU = blackjackGame['you'];
+const DEALER = blackjackGame['dealer'];
+
+const hitsound = new Audio('sounds/swish.m4a')
 
 //Query Selectors work like CSS
 //if someone hits with someone with this ID, then even listener will run the function Blackjackhit
 document.querySelector('#blackjack-hit-button').addEventListener('click', blackjackHit);
+document.querySelector('#blackjack-deal-button').addEventListener('click', blackjackDeal );
 
 function blackjackHit() {
-
-
-    alert(' work bitch');
+let card = randomCard();
+showCard(card, YOU);
 
 } 
+function showCard(card, activePlayer){
+//create element to hold
+let cardImage = document.createElement('img');
 
+//set the source image
+cardImage.src = 'images/2.png';
 
+//place to target
+document.querySelector(activePlayer['div']).appendChild(cardImage);
+
+hitsound.play();
+
+}
+
+function blackjackDeal(){
+
+    let yourImage = document.querySelector('#your-box').querySelectorAll('img');
+    let dealerImage = document.querySelector('#dealer-box').querySelectorAll('img');
+
+    console.log(yourImage);
+    
+    for(let i =0; i < yourImage.length; i++){
+        yourImage[i].remove();
+    }
+
+    for(let i =0; i < dealerImage.length; i++){
+        dealerImage[i].remove();
+    }
+
+}
+
+function randomCard(){
+    let randomIndex = Math.floor(Math.random() * 13)
+
+    // Why two parameters ??????????????   
+    return blackjackGame['cards'][randomIndex];
+}
