@@ -13,17 +13,17 @@
 
 .container-2, .flex-box-pick-color, .flex-blackjack-row-1, .flex-blackjack-row-2,
 .flex-blackjack-row-3 {
-   display: flex;
-    border:1px solid black;
+    display: flex;
+    border:1px solid purple;
     /*center*/
     padding: 10px;
     /*put h2 text in the center*/
-    flex-wrap: wrap;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-around;
 }
 
-.flex-blackjack-row-1,.flex-blackjack-row-2{
+.flex-blackjack-row-1, .flex-blackjack-row-2{
    background: url('Images/greenbackground.jpg') center;
    color: #fff;
    background-size: 800px;
@@ -31,18 +31,19 @@
 }
 .flex-blackjack-row-1 div{
   
-   border: 1px solid black;
+   border: 1px solid yellow;
    /*give yourself equal importants*/
-   flex:1;
+   flex:4;
    padding:10px;
    height: 350px;
    text-align: center ;
 }
 .container-1 div {
    display:flex;
-   border:solid black;
-   padding: 1em;
+   border:1px solid black;
+   padding: 100px;
    align-items: center;
+   
 }
 .flex-box-container-2 img { 
    width: 25%;

@@ -274,12 +274,13 @@ let card = randomCard();
 showCard(card, YOU);
 
 } 
+
 function showCard(card, activePlayer){
 //create element to hold
 let cardImage = document.createElement('img');
 
-//set the source image
-cardImage.src = 'images/2.png';
+//set the source image using template string with backticks keys 
+cardImage.src = `images/${card}.png`;
 
 //place to target
 document.querySelector(activePlayer['div']).appendChild(cardImage);
