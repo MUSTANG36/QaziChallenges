@@ -325,7 +325,7 @@ function updateCard(card, activePlayer){
 
    activePlayer['score'] += blackjackGame['cardMap'][card];
 
-    //score is adding correctly 
+    
 
    console.log("score: " + activePlayer['score']);
 
