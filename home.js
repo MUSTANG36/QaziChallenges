@@ -257,7 +257,7 @@ let blackjackGame ={
     'you': {'scoreSpan' : '#your-blackjack-result', 'div': '#your-box',"score":0},
     'dealer': {'scoreSpan' : '#dealer-blackjack-result', 'div': '#dealer-box',"score":0},
     'cards' : ['1','2','3','4','5','6','7','8','9','K','Q','A','J'],
-    'cardMap': {'1':1,'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9,'k':10, 'Q':10,'A':[1,11],'J':10},
+    'cardMap': {'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9,'K':10, 'Q':10,'A': [ 1, 11],'J':10}
 }
 
 const YOU = blackjackGame['you'];
@@ -271,7 +271,9 @@ document.querySelector('#blackjack-hit-button').addEventListener('click', blackj
 document.querySelector('#blackjack-deal-button').addEventListener('click', blackjackDeal );
 
 function blackjackHit() {
+
 let card = randomCard();
+console.log('card: '+ card);
 showCard(card, YOU);
 updateCard(card,YOU);
 
@@ -296,7 +298,7 @@ function blackjackDeal(){
     let yourImage = document.querySelector('#your-box').querySelectorAll('img');
     let dealerImage = document.querySelector('#dealer-box').querySelectorAll('img');
 
-    //console.log(yourImage);
+    console.log(yourImage);
     
     for(let i =0; i < yourImage.length; i++){
         yourImage[i].remove();
@@ -309,10 +311,8 @@ function blackjackDeal(){
 }
 
 function randomCard(){
-    let randomIndex = Math.floor((Math.random() * 12)+1)
-
-    // Why two parameters ??????????????   
-   console.log(randomIndex);
+    let randomIndex = Math.floor(Math.random() * 13)
+    console.log('random card: ' + randomIndex);
     return blackjackGame['cards'][randomIndex];
 
 }
@@ -326,6 +326,7 @@ function updateCard(card, activePlayer){
    activePlayer['score'] += blackjackGame['cardMap'][card];
 
     //score is adding correctly 
-   //console.log(activePlayer['score']);
+
+   console.log("score: " + activePlayer['score']);
 
 }
