@@ -254,10 +254,10 @@ function backgroundColorReset() {
 /////////////////////////////////////////Challege 5: BlackJack////////////////////////////////////////////////////////////////////////////////////
 
 let blackjackGame ={
-    'you': {'scoreSpan' : '#your-blackjack-result', 'div': '#your-box',"score":0},
-    'dealer': {'scoreSpan' : '#dealer-blackjack-result', 'div': '#dealer-box',"score":0},
-    'cards' : ['1','2','3','4','5','6','7','8','9','K','Q','A','J'],
-    'cardMap': {'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9,'K':10, 'Q':10,'A': [ 1, 11],'J':10}
+    'you': {'scoreSpan' : '#your-blackjack-result', 'div': '#your-box','score':0},
+    'dealer': {'scoreSpan' : '#dealer-blackjack-result', 'div': '#dealer-box','score':0},
+    'cards' : ['2','3','4','5','6','7','8','9','K','Q','A','J'],
+    'cardMap': {'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9,'K':10, 'Q':10,'A':[ 1, 11],'J':10},
 }
 
 const YOU = blackjackGame['you'];
@@ -276,7 +276,7 @@ let card = randomCard();
 console.log('card: '+ card);
 showCard(card, YOU);
 updateCard(card,YOU);
-
+showScore(YOU);
 } 
 
 function showCard(card, activePlayer){
@@ -311,7 +311,7 @@ function blackjackDeal(){
 }
 
 function randomCard(){
-    let randomIndex = Math.floor(Math.random() * 13)
+    let randomIndex = Math.floor(Math.random() * 12)
     console.log('random card: ' + randomIndex);
     return blackjackGame['cards'][randomIndex];
 
@@ -323,10 +323,29 @@ function updateCard(card, activePlayer){
     //const YOU = blackjackGame['you'];
     //updateCard(card,YOU);
 
+    //if adding 11 keeps me below 21 and 11 otherwise, add 1
+   if(card === 'A'){
+
+    if( activePlayer['score ']+ blackjackGame['cardMap'][card][1] <= 21){
+        activePlayer['score' ] += blackjackGame['cardMap'][card][1];
+    }else
+    activePlayer['score'] += blackjackGame['cardMap'][card][0];
+   }
+
+
    activePlayer['score'] += blackjackGame['cardMap'][card];
 
     
 
    console.log("score: " + activePlayer['score']);
 
+}
+
+
+function showScore(activePlayer ){
+
+   // activePlayer['scoreSpan'] = activePlayer['score'];
+   //activePlayer['scoreSpan'] = blackjackGame['score'];
+
+    document.querySelector(activePlayer['scoreSpan']).textContent = activePlayer['score'];
 }
