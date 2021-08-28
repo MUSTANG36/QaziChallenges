@@ -179,16 +179,16 @@ function rpsFrontEnd(humanImageChoice, botImageChoice, finalMessage) {
 
 //challenge 4: Change all the button colors 
 
- //html collection 
+//html collection 
 //copying the btn-class in order to copyAllButtons
 let allButtons = document.getElementsByTagName('button');
 let copyAllButtons = [];
 
 
-    
+
 
 function buttonColorChange(colorBtn) {
-   
+
     for (let i = 0; i < allButtons.length; i++) {
         copyAllButtons.push(allButtons[i].classList[1]);
     }
@@ -229,7 +229,7 @@ function buttonsGreen() {
 
 function randomColors() {
 
-    let choices = ['btn-primary','btn-danger', 'btn-success', 'btn-warning'];
+    let choices = ['btn-primary', 'btn-danger', 'btn-success', 'btn-warning'];
 
     for (let i = 0; i < allButtons.length; i++) {
 
@@ -253,11 +253,11 @@ function backgroundColorReset() {
 
 /////////////////////////////////////////Challege 5: BlackJack////////////////////////////////////////////////////////////////////////////////////
 
-let blackjackGame ={
-    'you': {'scoreSpan' : '#your-blackjack-result', 'div': '#your-box','score':0},
-    'dealer': {'scoreSpan' : '#dealer-blackjack-result', 'div': '#dealer-box','score':0},
-    'cards' : ['2','3','4','5','6','7','8','9','K','Q','A','J'],
-    'cardMap': {'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9,'K':10, 'Q':10,'A':[ 1, 11],'J':10},
+let blackjackGame = {
+    'you': { 'scoreSpan': '#your-blackjack-result', 'div': '#your-box', 'score': 0 },
+    'dealer': { 'scoreSpan': '#dealer-blackjack-result', 'div': '#dealer-box', 'score': 0 },
+    'cards': ['2', '3', '4', '5', '6', '7', '8', '9', 'K', 'Q', 'A', 'J'],
+    'cardMap': { '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, 'K': 10, 'Q': 10, 'A': [1, 11], 'J': 10 },
 }
 
 const YOU = blackjackGame['you'];
@@ -268,90 +268,91 @@ const hitsound = new Audio('sounds/swish.m4a')
 //Query Selectors work like CSS
 //if someone hits with someone with this ID, then even listener will run the function Blackjackhit
 document.querySelector('#blackjack-hit-button').addEventListener('click', blackjackHit);
-document.querySelector('#blackjack-deal-button').addEventListener('click', blackjackDeal );
+document.querySelector('#blackjack-deal-button').addEventListener('click', blackjackDeal);
 
 function blackjackHit() {
 
-let card = randomCard();
-console.log('card: '+ card);
-showCard(card, YOU);
-updateCard(card,YOU);
-showScore(YOU);
-} 
-
-function showCard(card, activePlayer){
-
-if(activePlayer['score'] <= 21){
-    //create element to hold
-    let cardImage = document.createElement('img');
-
-    //set the source image using template string with backticks keys 
-    cardImage.src = `images/${card}.png`;
-
-    //place to target
-    document.querySelector(activePlayer['div']).appendChild(cardImage);
-
-    hitsound.play();
+    let card = randomCard();
+    console.log('card: ' + card);
+    showCard(card, YOU);
+    updateCard(card, YOU);
+    showScore(YOU);
 }
 
+function showCard(card, activePlayer) {
+
+    if (activePlayer['score'] <= 21) {
+        //create element to hold
+        let cardImage = document.createElement('img');
+
+        //set the source image using template string with backticks keys 
+        cardImage.src = `images/${card}.png`;
+
+        //place to target
+        document.querySelector(activePlayer['div']).appendChild(cardImage);
+
+        hitsound.play();
+    }
+
 }
 
-function blackjackDeal(){
+function blackjackDeal() {
 
     let yourImage = document.querySelector('#your-box').querySelectorAll('img');
     let dealerImage = document.querySelector('#dealer-box').querySelectorAll('img');
 
     console.log(yourImage);
-    
-    for(let i =0; i < yourImage.length; i++){
+
+    for (let i = 0; i < yourImage.length; i++) {
         yourImage[i].remove();
     }
 
-    for(let i =0; i < dealerImage.length; i++){
+    for (let i = 0; i < dealerImage.length; i++) {
         dealerImage[i].remove();
     }
 
 }
 
-function randomCard(){
+function randomCard() {
     let randomIndex = Math.floor(Math.random() * 12)
     console.log('random card: ' + randomIndex);
     return blackjackGame['cards'][randomIndex];
 
 }
 
-function updateCard(card, activePlayer){
+function updateCard(card, activePlayer) {
 
     // 'you': {'scoreSpan' : '#your-blackjack-result', 'div': '#your-box',"score":0},
     //const YOU = blackjackGame['you'];
     //updateCard(card,YOU);
 
     //if adding 11 keeps me below 21 and 11 otherwise, add 1
-   if(card === 'A'){
+    if (card === 'A') {
 
-    if( activePlayer['score ']+ blackjackGame['cardMap'][card][1] <= 21){
-        activePlayer['score' ] += blackjackGame['cardMap'][card][1];
-    }else
-    activePlayer['score'] += blackjackGame['cardMap'][card][0];
-   }
+        if (activePlayer['score '] + blackjackGame['cardMap'][card][1] <= 21) {
+            activePlayer['score'] += blackjackGame['cardMap'][card][1];
+        } else
+            activePlayer['score'] += blackjackGame['cardMap'][card][0];
+    }
 
 
-   activePlayer['score'] += blackjackGame['cardMap'][card];
+    activePlayer['score'] += blackjackGame['cardMap'][card];
 
-    
 
-   console.log("score: " + activePlayer['score']);
+
+    console.log("score: " + activePlayer['score']);
 
 }
 
 
-function showScore(activePlayer ){
+function showScore(activePlayer) {
 
-   // activePlayer['scoreSpan'] = activePlayer['score'];
-   //activePlayer['scoreSpan'] = blackjackGame['score'];
-    if(activePlayer['score'] > 21 ){
-      document.querySelector(activePlayer['scoreSpan']).textContent = 'BUST';
-      document.querySelector(activePlayer['scoreSpan']).style.color= 'red';
+    // activePlayer['scoreSpan'] = activePlayer['score'];
+    //activePlayer['scoreSpan'] = blackjackGame['score'];
+    if (activePlayer['score'] > 21) {
+        document.querySelector(activePlayer['scoreSpan']).textContent = 'Bust';
+        document.querySelector(activePlayer['scoreSpan']).style.color = 'red';
+    } else {
+        document.querySelector(activePlayer['scoreSpan']).textContent = activePlayer['score'];
     }
-    document.querySelector(activePlayer['scoreSpan']).textContent = activePlayer['score'];
 }
