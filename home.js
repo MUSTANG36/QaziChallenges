@@ -280,16 +280,19 @@ showScore(YOU);
 } 
 
 function showCard(card, activePlayer){
-//create element to hold
-let cardImage = document.createElement('img');
 
-//set the source image using template string with backticks keys 
-cardImage.src = `images/${card}.png`;
+if(activePlayer['score'] <= 21){
+    //create element to hold
+    let cardImage = document.createElement('img');
 
-//place to target
-document.querySelector(activePlayer['div']).appendChild(cardImage);
+    //set the source image using template string with backticks keys 
+    cardImage.src = `images/${card}.png`;
 
-hitsound.play();
+    //place to target
+    document.querySelector(activePlayer['div']).appendChild(cardImage);
+
+    hitsound.play();
+}
 
 }
 
@@ -346,6 +349,9 @@ function showScore(activePlayer ){
 
    // activePlayer['scoreSpan'] = activePlayer['score'];
    //activePlayer['scoreSpan'] = blackjackGame['score'];
-
+    if(activePlayer['score'] > 21 ){
+      document.querySelector(activePlayer['scoreSpan']).textContent = 'BUST';
+      document.querySelector(activePlayer['scoreSpan']).style.color= 'red';
+    }
     document.querySelector(activePlayer['scoreSpan']).textContent = activePlayer['score'];
 }
