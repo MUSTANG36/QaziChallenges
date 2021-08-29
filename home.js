@@ -267,7 +267,7 @@ const hitsound = new Audio('sounds/swish.m4a')
 
 //Query Selectors work like CSS
 //if someone hits with someone with this ID, then even listener will run the function Blackjackhit
-document.querySelector('#blackjack-hit-button').addEventListener('click', blackjackHit);
+document.querySelector('#blackjack-hit-button').addEventListener('click', blackjackHit,);
 document.querySelector('#blackjack-deal-button').addEventListener('click', blackjackDeal);
 
 function blackjackHit() {
@@ -277,6 +277,11 @@ function blackjackHit() {
     showCard(card, YOU);
     updateCard(card, YOU);
     showScore(YOU);
+
+
+
+
+
 }
 
 function showCard(card, activePlayer) {
@@ -310,6 +315,15 @@ function blackjackDeal() {
     for (let i = 0; i < dealerImage.length; i++) {
         dealerImage[i].remove();
     }
+
+
+    document.querySelector('#your-blackjack-result').textContent = 0;
+    document.querySelector('#your-blackjack-result').style.color= 'white';
+   
+    //set active player score back to zero
+    //activePlayer['score']
+
+
 
 }
 
@@ -355,4 +369,6 @@ function showScore(activePlayer) {
     } else {
         document.querySelector(activePlayer['scoreSpan']).textContent = activePlayer['score'];
     }
+    
+
 }
