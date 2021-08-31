@@ -269,6 +269,7 @@ const hitsound = new Audio('sounds/swish.m4a')
 //if someone hits with someone with this ID, then even listener will run the function Blackjackhit
 document.querySelector('#blackjack-hit-button').addEventListener('click', blackjackHit,);
 document.querySelector('#blackjack-deal-button').addEventListener('click', blackjackDeal);
+document.querySelector('#blackjack-stand-button').addEventListener('click', dealerLogic);
 
 function blackjackHit() {
 
@@ -277,7 +278,7 @@ function blackjackHit() {
     showCard(card, YOU);
     updateCard(card, YOU);
     showScore(YOU);
-
+    determineWinner();
 
 
 
@@ -319,6 +320,9 @@ function blackjackDeal() {
 
     document.querySelector('#your-blackjack-result').textContent = 0;
     document.querySelector('#your-blackjack-result').style.color= 'white';
+
+    document.querySelector('#dealer-blackjack-result').textContent = 0;
+    document.querySelector('#dealer-blackjack-result').style.color= 'white';
    
     //set active player score back to zero
     //activePlayer['score']
@@ -370,5 +374,34 @@ function showScore(activePlayer) {
         document.querySelector(activePlayer['scoreSpan']).textContent = activePlayer['score'];
     }
     
+
+}
+
+function dealerLogic(){
+    let card = randomCard();
+    showCard(card, DEALER);
+    updateCard(card, DEALER);
+    showScore(DEALER );
+
+}
+
+function determineWinner(){
+
+
+    let wins = 0;
+    let lost = 0;
+    let draw = 0;
+
+    if(YOU['score'] == 21 || YOU['score'] > DEALER['score']){
+        
+        document.querySelector('#win').textContent = ++win; 
+        console.log("winner" + wins);
+    }else if(YOU['score'] > 21 || YOU['score'] < DEALER['score']){
+        document.querySelector('#losses').textContent = ++lost; 
+        console.log("losses" + lost);
+    }else{
+        document.querySelector('#draws').textContent = ++draw; 
+        console.log("draw" + draw);
+    }
 
 }
