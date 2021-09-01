@@ -278,7 +278,7 @@ function blackjackHit() {
     showCard(card, YOU);
     updateCard(card, YOU);
     showScore(YOU);
-    determineWinner();
+   
 
 
 
@@ -327,8 +327,8 @@ function blackjackDeal() {
     //set active player score back to zero
     //activePlayer['score']
 
-
-
+    determineWinner();
+    alert("deal");
 }
 
 function randomCard() {
@@ -392,16 +392,20 @@ function determineWinner(){
     let lost = 0;
     let draw = 0;
 
-    if(YOU['score'] == 21 || YOU['score'] > DEALER['score']){
+    if(YOU['score'] === 21 || YOU['score'] > DEALER['score']){
         
-        document.querySelector('#win').textContent = ++win; 
+        win++;
+        document.querySelector('#wins').textContent = win; 
+        // document.querySelector('#win').textContent = 1; 
         console.log("winner" + wins);
     }else if(YOU['score'] > 21 || YOU['score'] < DEALER['score']){
-        document.querySelector('#losses').textContent = ++lost; 
-        console.log("losses" + lost);
+        document.querySelector('#losses').textContent = lost++; 
+        document.querySelector('#losses').textContent = 1;
+        console.log("losses" );
     }else{
-        document.querySelector('#draws').textContent = ++draw; 
-        console.log("draw" + draw);
+        draw++; 
+        document.querySelector('#draws').textContent = draw;
+        console.log("draw: " + draw);
     }
 
 }
