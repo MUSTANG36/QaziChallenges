@@ -304,6 +304,8 @@ function showCard(card, activePlayer) {
 
 function blackjackDeal() {
 
+    determineWinner();
+
     let yourImage = document.querySelector('#your-box').querySelectorAll('img');
     let dealerImage = document.querySelector('#dealer-box').querySelectorAll('img');
 
@@ -327,14 +329,13 @@ function blackjackDeal() {
     //set active player score back to zero
     //activePlayer['score']
 
-    determineWinner();
-    alert("deal");
+ 
 }
 
 function randomCard() {
-    let randomIndex = Math.floor(Math.random() * 12)
-    console.log('random card: ' + randomIndex);
-    return blackjackGame['cards'][randomIndex];
+    //let randomIndex = Math.floor(Math.random() * 12)
+    //console.log('random card: ' + randomIndex);
+    return blackjackGame['cards'][10];
 
 }
 
@@ -344,17 +345,19 @@ function updateCard(card, activePlayer) {
     //const YOU = blackjackGame['you'];
     //updateCard(card,YOU);
 
-    //if adding 11 keeps me below 21 and 11 otherwise, add 1
+    //if adding 11 keeps me below 21 choose 11, otherwise add 1
     if (card === 'A') {
 
         if (activePlayer['score '] + blackjackGame['cardMap'][card][1] <= 21) {
-            activePlayer['score'] += blackjackGame['cardMap'][card][1];
-        } else
             activePlayer['score'] += blackjackGame['cardMap'][card][0];
+            console.log('adding 11');
+        } else
+            activePlayer['score'] += blackjackGame['cardMap'][card][1];
+            console.log('adding 1');
     }
 
 
-    activePlayer['score'] += blackjackGame['cardMap'][card];
+    //activePlayer['score'] += blackjackGame['cardMap'][card];
 
 
 
