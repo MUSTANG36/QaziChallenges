@@ -259,7 +259,9 @@ let blackjackGame = {
     'cards': ['2', '3', '4', '5', '6', '7', '8', '9', 'K', 'Q', 'A', 'J'],
     'cardMap': { '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, 'K': 10, 'Q': 10, 'A': [1, 11], 'J': 10 },
 }
-
+const WINS = 0;
+const LOST = 0;
+const DRAW = 0;
 const YOU = blackjackGame['you'];
 const DEALER = blackjackGame['dealer'];
 
@@ -318,6 +320,7 @@ function blackjackDeal() {
         dealerImage[i].remove();
     }
 
+    determineWinner();
 
     document.querySelector('#your-blackjack-result').textContent = 0;
     document.querySelector('#your-blackjack-result').style.color= 'white';
@@ -327,8 +330,11 @@ function blackjackDeal() {
    
     //set active player score back to zero
     //activePlayer['score']
-    determineWinner();
     
+    
+    YOU['score'] = 0;
+    DEALER['score'] = 0;
+    alert('clear score');
  
 }
 
@@ -393,37 +399,38 @@ function dealerLogic(){
 function determineWinner(){
 
 
-    let wins = 0;
-    let lost = 0;
-    let draw = 0;
-
-
-
     if(YOU['score'] == 21 && DEALER['score'] != 21){
-        win++;
-        //document.querySelector('#wins').textContent = win; 
+        WINS++;
+        document.querySelector('#wins').textContent = WINS; 
         alert('winner');
     }
     if(YOU['score'] <= 21 && DEALER['score'] > 21){
-        win++;
+        WINS++;
+        document.querySelector('#wins').textContent = WINS; 
         alert('winner')
     }
     if(YOU['score'] > 21 && DEALER['score'] <= 21){
-        lost++;
+        LOST++;
+        document.querySelector('#lost').textContent = LOST;
         alert('lost')
     }
 
     if(YOU['score'] < 21 && DEALER['score'] < 21){
-        if(YOU['score'] == 21 && DEALER['score'] == 21){
-            tie++;
+        if(YOU['score'] ==  DEALER['score']){
+            DRAW++;
+            document.querySelector('#draw').textContent = DRAW;
             alert("tie");
         }
+
         else if (YOU['score'] > DEALER['score'] ){
-            win++
+            WINS++
+            document.querySelector('#wins').textContent = WINS; 
             alert('winner');
         }
         else {
-            lost ++;
+            // having trouble here
+            LOST++;
+            document.querySelector('#lost').textContent = LOST;
             alert('lost');
         }
     }
