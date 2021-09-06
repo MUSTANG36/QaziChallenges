@@ -348,12 +348,12 @@ function updateCard(card, activePlayer) {
     //if adding 11 keeps me below 21 choose 11, otherwise add 1
     if (card === 'A') {
 
-        if (activePlayer['score '] + blackjackGame['cardMap'][card][1] <= 21) {
-            activePlayer['score'] += blackjackGame['cardMap'][card][0];
-            console.log('adding 11');
-        } else
+        if (activePlayer['score'] + blackjackGame['cardMap'][card][1] <= 21) {
             activePlayer['score'] += blackjackGame['cardMap'][card][1];
-            console.log('adding 1');
+            
+        } else
+            activePlayer['score'] += blackjackGame['cardMap'][card][0];
+            
     }
 
 
