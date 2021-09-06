@@ -279,8 +279,6 @@ function blackjackHit() {
     updateCard(card, YOU);
     showScore(YOU);
     
-
-
 }
 
 
@@ -304,7 +302,8 @@ function showCard(card, activePlayer) {
 
 function blackjackDeal() {
 
-    determineWinner();
+    
+    
 
     let yourImage = document.querySelector('#your-box').querySelectorAll('img');
     let dealerImage = document.querySelector('#dealer-box').querySelectorAll('img');
@@ -328,7 +327,8 @@ function blackjackDeal() {
    
     //set active player score back to zero
     //activePlayer['score']
-    
+    determineWinner();
+    alert('Determine Winner');
  
 }
 
@@ -356,9 +356,9 @@ function updateCard(card, activePlayer) {
             
     }
 
-
-    //activePlayer['score'] += blackjackGame['cardMap'][card];
-
+    if(card != 'A'){
+    activePlayer['score'] += blackjackGame['cardMap'][card];
+    }
 
 
     console.log("score: " + activePlayer['score']);
@@ -375,6 +375,7 @@ function showScore(activePlayer) {
         document.querySelector(activePlayer['scoreSpan']).style.color = 'red';
     } else {
         document.querySelector(activePlayer['scoreSpan']).textContent = activePlayer['score'];
+        
     }
     
 
