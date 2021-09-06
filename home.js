@@ -328,7 +328,7 @@ function blackjackDeal() {
     //set active player score back to zero
     //activePlayer['score']
     determineWinner();
-    alert('Determine Winner');
+    
  
 }
 
@@ -397,20 +397,52 @@ function determineWinner(){
     let lost = 0;
     let draw = 0;
 
-    if(YOU['score'] === 21 || YOU['score'] > DEALER['score']){
-        
+
+
+    if(YOU['score'] == 21 && DEALER['score'] != 21){
         win++;
-        document.querySelector('#wins').textContent = win; 
-        // document.querySelector('#win').textContent = 1; 
-        console.log("winner" + wins);
-    }else if(YOU['score'] > 21 || YOU['score'] < DEALER['score']){
-        document.querySelector('#losses').textContent = lost++; 
-        document.querySelector('#losses').textContent = 1;
-        console.log("losses" );
-    }else{
-        draw++; 
-        document.querySelector('#draws').textContent = draw;
-        console.log("draw: " + draw);
+        //document.querySelector('#wins').textContent = win; 
+        alert('winner');
     }
+    if(YOU['score'] <= 21 && DEALER['score'] > 21){
+        win++;
+        alert('winner')
+    }
+    if(YOU['score'] > 21 && DEALER['score'] <= 21){
+        lost++;
+        alert('lost')
+    }
+
+    if(YOU['score'] < 21 && DEALER['score'] < 21){
+        if(YOU['score'] == 21 && DEALER['score'] == 21){
+            tie++;
+            alert("tie");
+        }
+        else if (YOU['score'] > DEALER['score'] ){
+            win++
+            alert('winner');
+        }
+        else {
+            lost ++;
+            alert('lost');
+        }
+    }
+
+
+    // if(YOU['score'] === 21 || YOU['score'] > DEALER['score']){
+    //     win++;
+    //     document.querySelector('#wins').textContent = win; 
+    //     // document.querySelector('#win').textContent = 1; 
+    //     console.log("winner" + wins);
+
+    // }else if(YOU['score'] > 21 || YOU['score'] < DEALER['score']){
+    //     document.querySelector('#losses').textContent = lost++; 
+    //     document.querySelector('#losses').textContent = 1;
+    //     console.log("losses" );
+    // }else{
+    //     draw++; 
+    //     document.querySelector('#draws').textContent = draw;
+    //     console.log("draw: " + draw);
+    // }
 
 }
