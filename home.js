@@ -278,12 +278,12 @@ function blackjackHit() {
     showCard(card, YOU);
     updateCard(card, YOU);
     showScore(YOU);
-   
-
-
+    
 
 
 }
+
+
 
 function showCard(card, activePlayer) {
 
@@ -328,14 +328,14 @@ function blackjackDeal() {
    
     //set active player score back to zero
     //activePlayer['score']
-
+    
  
 }
 
 function randomCard() {
-    //let randomIndex = Math.floor(Math.random() * 12)
-    //console.log('random card: ' + randomIndex);
-    return blackjackGame['cards'][10];
+    let randomIndex = Math.floor(Math.random() * 12)
+    console.log('random card: ' + randomIndex);
+    return blackjackGame['cards'][randomIndex];
 
 }
 
@@ -379,6 +379,7 @@ function showScore(activePlayer) {
     
 
 }
+
 
 function dealerLogic(){
     let card = randomCard();
