@@ -259,9 +259,9 @@ let blackjackGame = {
     'cards': ['2', '3', '4', '5', '6', '7', '8', '9', 'K', 'Q', 'A', 'J'],
     'cardMap': { '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, 'K': 10, 'Q': 10, 'A': [1, 11], 'J': 10 },
 }
-const WINS = 0;
-const LOST = 0;
-const DRAW = 0;
+// const WINS = 0;
+// const LOST = 0;
+// const DRAW = 0;
 const YOU = blackjackGame['you'];
 const DEALER = blackjackGame['dealer'];
 
@@ -398,44 +398,47 @@ function dealerLogic(){
 
 function determineWinner(){
 
+    let win = 0;
+    let lost = 0;
+    let tie = 0;
 
-    if(YOU['score'] == 21 && DEALER['score'] != 21){
-        WINS++;
-        document.querySelector('#wins').textContent = WINS; 
-        alert('winner');
-    }
-    if(YOU['score'] <= 21 && DEALER['score'] > 21){
-        WINS++;
-        document.querySelector('#wins').textContent = WINS; 
-        alert('winner')
-    }
-    if(YOU['score'] > 21 && DEALER['score'] <= 21){
-        LOST++;
-        document.querySelector('#lost').textContent = LOST;
-        alert('lost')
-    }
+    // if(YOU['score'] == 21 && DEALER['score'] != 21){
+    //     WINS++;
+    //     document.querySelector('#wins').textContent = WINS; 
+    //     alert('winner');
+    // }
+    // if(YOU['score'] <= 21 && DEALER['score'] > 21){
+    //     WINS++;
+    //     document.querySelector('#wins').textContent = WINS; 
+    //     alert('winner')
+    // }
+    // if(YOU['score'] > 21 && DEALER['score'] <= 21){
+    //     LOST++;
+    //     document.querySelector('#lost').textContent = LOST;
+    //     alert('lost')
+    // }
 
-    if(YOU['score'] < 21 && DEALER['score'] < 21){
-        if(YOU['score'] ==  DEALER['score']){
-            DRAW++;
-            document.querySelector('#draw').textContent = DRAW;
-            alert("tie");
-        }
+    // if(YOU['score'] < 21 && DEALER['score'] < 21){
+    //     if(YOU['score'] ==  DEALER['score']){
+    //         DRAW++;
+    //         document.querySelector('#draw').textContent = DRAW;
+    //         alert("tie");
+    //     }
 
-        else if (YOU['score'] > DEALER['score'] ){
-            WINS++
-            document.querySelector('#wins').textContent = WINS; 
-            alert('winner');
-        }
-        else {
-            // having trouble here
-            LOST++;
-            document.querySelector('#lost').textContent = LOST;
-            alert('lost');
-        }
-    }
+    //     else if (YOU['score'] > DEALER['score'] ){
+    //         WINS++
+    //         document.querySelector('#wins').textContent = WINS; 
+    //         alert('winner');
+    //     }
+    //     else {
+    //         // having trouble here
+    //         LOST++;
+    //         document.querySelector('#lost').textContent = LOST;
+    //         alert('lost');
+    //     }
+    // }
 
-
+///////////////////////////////////////////////////////////////////////////////////
     // if(YOU['score'] === 21 || YOU['score'] > DEALER['score']){
     //     win++;
     //     document.querySelector('#wins').textContent = win; 
@@ -452,4 +455,26 @@ function determineWinner(){
     //     console.log("draw: " + draw);
     // }
 
+    //////////////////////////////////////////////////////////////////////////////////
+
+    if(YOU['score'] > 21 && DEALER['score'] <= 21 ){
+        lost++;
+        alert('lost');
+    }else if (DEALER['score'] > 21){
+        win++;
+        alert('won');
+    }
+
+    if(YOU['score'] <= 21 && DEALER['score'] <=21) {
+        if(YOU['score'] == DEALER['score']){
+            tie++;
+            alert('tie');
+        }else if(YOU['score'] > DEALER['score']){
+            win++;
+            alert('won');
+        }else{
+            lost++;
+            alert('lost');
+        }
+    }
 }
