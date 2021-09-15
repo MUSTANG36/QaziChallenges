@@ -398,9 +398,17 @@ function dealerLogic(){
 
 function determineWinner(){
 
-    let win = 0;
-    let lost = 0;
-    let tie = 0;
+    let tieElement = document.querySelector('#tie');
+    let tieScore = tieElement.textContent;
+
+    let lostElement = document.querySelector('#lost');
+    let lostScore  = lostElement.textContent;
+
+    let winElement = document.querySelector('#wins');
+    let winScore = winElement.textContent;
+
+
+
 
     // if(YOU['score'] == 21 && DEALER['score'] != 21){
     //     WINS++;
@@ -458,22 +466,28 @@ function determineWinner(){
     //////////////////////////////////////////////////////////////////////////////////
 
     if(YOU['score'] > 21 && DEALER['score'] <= 21 ){
-        lost++;
+        lostScore++;
+        lostElement.textContent = lostScore;
         alert('lost');
     }else if (DEALER['score'] > 21){
-        win++;
+        winScore++;
+        winElement.textContent = winScore;
         alert('won');
     }
 
     if(YOU['score'] <= 21 && DEALER['score'] <=21) {
         if(YOU['score'] == DEALER['score']){
-            tie++;
+            tieScore++;
+          tieElement.textContent = tieScore;
             alert('tie');
-        }else if(YOU['score'] > DEALER['score']){
-            win++;
+        }else if(YOU['score'] > DEALER['score']){2
+            winScore++;
+           // document.querySelector('#wins').textContent = win;
+            winElement.textContent = winScore;
             alert('won');
         }else{
-            lost++;
+            lostScore++;
+            lostElement.textContent = lostScore;
             alert('lost');
         }
     }
