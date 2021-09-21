@@ -106,7 +106,8 @@ function decideWinner(yourChoice, computerChoice) {
         // what rock will win or lose
         'rock': { 'scissor': 1, 'rock': .05, 'paper': 0 },
         'scissor': { 'scissor': .05, 'rock': 0, 'paper': 1 },
-        'paper': { 'scissor': 0, 'rock': 1, 'paper': .05 }
+        'paper': { 'scissor': 0, 'rock': 1, 'paper': .05 },
+
     }
 
     //this will return an array
@@ -258,6 +259,9 @@ let blackjackGame = {
     'dealer': { 'scoreSpan': '#dealer-blackjack-result', 'div': '#dealer-box', 'score': 0 },
     'cards': ['2', '3', '4', '5', '6', '7', '8', '9', 'K', 'Q', 'A', 'J'],
     'cardMap': { '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, 'K': 10, 'Q': 10, 'A': [1, 11], 'J': 10 },
+    'isStand': false,
+    'isTurnOver': false
+
 }
 // const WINS = 0;
 // const LOST = 0;
@@ -270,16 +274,19 @@ const hitsound = new Audio('sounds/swish.m4a')
 //Query Selectors work like CSS
 //if someone hits with someone with this ID, then even listener will run the function Blackjackhit
 document.querySelector('#blackjack-hit-button').addEventListener('click', blackjackHit,);
-document.querySelector('#blackjack-deal-button').addEventListener('click', blackjackDeal);
 document.querySelector('#blackjack-stand-button').addEventListener('click', dealerLogic);
+document.querySelector('#blackjack-deal-button').addEventListener('click', blackjackDeal);
+
 
 function blackjackHit() {
 
-    let card = randomCard();
-    console.log('card: ' + card);
-    showCard(card, YOU);
-    updateCard(card, YOU);
-    showScore(YOU);
+    if (blackjackGame['isStand'] == false) {
+        let card = randomCard();
+        console.log('card: ' + card);
+        showCard(card, YOU);
+        updateCard(card, YOU);
+        showScore(YOU);
+    }
 
 }
 
@@ -305,6 +312,7 @@ function showCard(card, activePlayer) {
 function blackjackDeal() {
 
 
+    if(blackjackGame['isTurnOver'] == true){
     let yourImage = document.querySelector('#your-box').querySelectorAll('img');
     let dealerImage = document.querySelector('#dealer-box').querySelectorAll('img');
 
@@ -339,7 +347,12 @@ function blackjackDeal() {
     DEALER['score'] = 0;
     // document.querySelector('#blackjack-results').textContent = "Let's play";
     alert('clear score');
+    
+    blackjackGame['isTurnOver'] = false;
+    blackjackGame['isStand'] = false;
+    }           
 
+   
 }
 
 function randomCard() {
@@ -396,12 +409,19 @@ function showScore(activePlayer) {
 
 
 function dealerLogic() {
+
+    blackjackGame['isStand'] = true;
+
+    if(  blackjackGame['isTurnOver'] == false){
     let card = randomCard();
     showCard(card, DEALER);
     updateCard(card, DEALER);
     showScore(DEALER);
+    }
 
     if (DEALER['score'] > 15) {
+        
+        blackjackGame['isTurnOver'] = true;
         //Show Game Results
         showResult(determineWinner());
     }
