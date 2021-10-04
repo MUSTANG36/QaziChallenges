@@ -33,9 +33,10 @@ function ageInDays() {
 
     //create and store 
     let h1 = document.createElement('h1');
-    let textAnswer = document.createTextNode('You are ' + ageInDays + 'days');
+    let textAnswer = document.createTextNode('You are ' + ageInDays + ' days.');
     h1.setAttribute('id', 'ageInDays');
     h1.appendChild(textAnswer);
+    
 
     //display
     document.getElementById('flex-box-result').appendChild(h1);
